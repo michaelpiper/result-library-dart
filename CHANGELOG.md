@@ -15,10 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Resolved typos and formatting issues in the `pubspec.yaml` file.
-- Ensured compatibility with Dart SDK version `>=2.19.0 <5.0.0`.
+- Ensured compatibility with Dart SDK version `>=2.19.0 <4.0.0`.
 
 ### Changed
-- Updated the SDK constraint to explicitly reflect compatibility with Dart SDK `>=2.19.0 <5.0.0`.
+- Updated the SDK constraint to explicitly reflect compatibility with Dart SDK `>=2.19.0 <4.0.0`.
 
 ### Removed
 - Removed the deprecated `author` field from the `pubspec.yaml` file.

@@ -6,7 +6,7 @@ repository: https://github.com/michaelpiper/result-library-dart
 issue_tracker: https://github.com/michaelpiper/result-library-dart/issues
 
 environment:
-  sdk: ">=2.19.0 <5.0.0"
+  sdk: ">=2.19.0 <4.0.0"
 
 dependencies:
   flutter:
