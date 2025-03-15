@@ -1,0 +1,34 @@
+name: result_library
+description: A robust Result type implementation for handling success and error states in Flutter and Dart applications.
+version: 1.0.0
+homepage: https://github.com/michaelpiper/result-library-dart
+repository: https://github.com/michaelpiper/result-library-dart
+issue_tracker: https://github.com/michaelpiper/result-library-dart/issues
+
+environment:
+  sdk: ">=2.19.0 <5.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  test: ^1.24.0
+  flutter_test:
+    sdk: flutter
+license: MIT
+
+keywords:
+  - result
+  - dart
+  - flutter
+  - error-handling
+  - functional-programming
+  - library
+  - ok
+  - error
+  - input-handling
+
+documentation: https://pub.dev/documentation/result_library/latest/
+
+publish_to: 'https://pub.dev'

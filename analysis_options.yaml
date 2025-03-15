@@ -1,0 +1,70 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional Lint Rules
+linter:
+  rules:
+    # Avoid using deprecated members
+    - avoid_deprecated:
+
+    # Ensure all control flow statements use braces
+    - curly_braces_in_flow_control_structures:
+
+    # Avoid empty catch blocks
+    - empty_catches:
+
+    # Ensure files end with a newline
+    - eol_at_end_of_file:
+
+    # Avoid unnecessary `new` keyword
+    - prefer_const_constructors:
+    - prefer_const_constructors_in_immutables:
+
+    # Prefer using `final` for variables that are not reassigned
+    - prefer_final_fields:
+    - prefer_final_locals:
+
+    # Avoid unused imports, declarations, and variables
+    - unused_import:
+    - unused_element:
+    - unused_local_variable:
+
+    # Avoid implicit dynamic types
+    - avoid_dynamic_calls:
+
+    # Ensure proper formatting of comments
+    - comment_references:
+
+    # Avoid unnecessary null checks
+    - unnecessary_null_checks:
+
+    # Enforce consistent naming conventions
+    - non_constant_identifier_names:
+
+    # Avoid returning null for Future types
+    - avoid_returning_null_for_future:
+
+    # Avoid shadowing names from outer scopes
+    - avoid_shadowing_type_parameters:
+
+# Analyzer Options
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+  errors:
+    # Treat missing required parameters as an error
+    missing_required_param: error
+
+    # Treat invalid assignments as an error
+    invalid_assignment: error
+
+    # Treat unused imports as a warning
+    unused_import: warning
+
+    # Treat dead code as a warning
+    dead_code: warning
+
+  exclude:
+    - "**/*.g.dart" # Exclude generated files
+    - "**/*.freezed.dart" # Exclude Freezed-generated files (if applicable)
