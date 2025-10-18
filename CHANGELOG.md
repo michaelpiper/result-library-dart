@@ -23,6 +23,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Removed the deprecated `author` field from the `pubspec.yaml` file.
 
+## [1.1.0] - 2025-10-18
+
+### Added
+- Added `when({ok, err})` method for pattern matching on `Result`.
+- Added `fold<R>({ok, err})` method to asynchronously fold into a `Future<R>`.
+- Added `map<RT>(mapper)` method to transform `Ok` values while preserving error type.
+
+### Changed
+- Updated `README.md` with examples and API docs for `when`, `fold`, and `map`.
+- Corrected examples to use `err()` instead of `error()` to match the API.
+
 ## [Unreleased]
 
 - No unreleased changes at this time.

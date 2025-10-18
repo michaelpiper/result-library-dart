@@ -40,17 +40,49 @@ import 'package:result_library/result_library.dart';
 
 void main() {
   // Success case
-  var success = ResultBuilder.ok<int, String>(42);
+  Result<int, String> success = Ok(42);
   print(success.isOk()); // true
   print(success.unwrap()); // 42
+  print(success.ok()); // 42
 
   // Error case
-  var failure = ResultBuilder.err<int, String>('Something went wrong');
+  Result<int, String> failure = Err('Something went wrong');
   print(failure.isErr()); // true
   print(failure.unwrapErr()); // Something went wrong
+  print(failure.err()); // Something went wrong
 }
 ```
 
+### Pattern Matching with `when`
+
+```dart
+final r = Ok<int, String>(5);
+final value = r.when(
+  ok: (v) => v,        // keep the success value
+  err: (e) => 0,       // provide a fallback value of type T
+);
+print(value); // 5
+```
+
+### Asynchronous `fold<R>()`
+
+```dart
+final r2 = Err<int, String>('network');
+final message = await r2.fold<String>(
+  ok: (v) async => 'ok: $v',
+  err: (e) async => 'err: $e',
+);
+print(message); // "err: network"
+```
+
+### Transforming with `map<RT>()`
+
+```dart
+final r3 = Ok<int, String>(7);
+final mapped = r3.map((v) => 'value=$v'); // Result<String, String>
+print(mapped.isOk()); // true
+print(mapped.ok()); // "value=7"
+```
 ### Advanced Example
 
 ```dart
@@ -64,12 +96,23 @@ Result<int, String> divide(int a, int b) {
 }
 
 void main() {
-  var result = divide(10, 2);
+  final result = divide(10, 2);
 
   if (result.isOk()) {
     print('Result: ${result.unwrap()}'); // Result: 5
   } else {
     print('Error: ${result.unwrapErr()}'); // Handles division by zero
+  }
+   if (result.isOk()) {
+    print('Result: ${result.ok()}'); // Result: 5
+  } else {
+    print('Error: ${result.err()}'); // Handles division by zero
+  }
+
+  if (result.isErr()) {
+    print('Error: ${result.err()}'); // Error: Division by zero
+  } else {
+    print('Result: ${result.ok()}'); // Result: 5
   }
 }
 ```
@@ -336,6 +379,9 @@ You can include these examples in your package's documentation or `README.md` to
 - `err()`: Retrieves the error value. Throws an exception if called on an `Ok`.
 - `unwrap()`: Unwraps the success value. Throws an exception if the result is `Err`.
 - `unwrapErr()`: Unwraps the error value. Throws an exception if the result is `Ok`.
+- `when({required T Function(T) ok, required T Function(E) err})`: Pattern-match and produce a `T` in both branches.
+- `fold<R>({required Future<R> Function(T) ok, required Future<R> Function(E) err})`: Asynchronously fold into a `Future<R>`.
+- `map<RT>(RT Function(T))`: Transform the `Ok` value to a new type, preserving `E`.
 
 ## Contributing
 
